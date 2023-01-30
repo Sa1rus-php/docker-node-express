@@ -1,5 +1,18 @@
 version: '3.8'
 services:
+  mysql:
+    image: 'mysql:5.7'
+    platform: linux/x86_64
+    working_dir: /src
+    volumes:
+      - '.:/src'
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=default
+      - MYSQL_USER=admin
+      - MYSQL_PASSWORD=admin
+    ports:
+      - '3002:3306'
   web:
     build:
       context: ./
